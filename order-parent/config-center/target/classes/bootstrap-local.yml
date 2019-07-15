@@ -1,0 +1,31 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-center
+  # 配置中心
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/gunstofire/springcloud-config.git # 管理配置文件git服务器端路径
+          search-paths: local # 对应的配置文件路径
+          username: gunstofire
+          password: 848382xfk
+      label: master # 分支
+
+# 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
